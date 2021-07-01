@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+import { Platform } from "react-native";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 import Movies from "../screens/Movies";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
@@ -23,7 +25,36 @@ export default ({ navigation, route }) => {
   }, [route]);
 
   return (
-    <Tabs.Navigator>
+    <Tabs.Navigator
+      screenOptions={({ route }) => ({
+        //same as () => { return {} }
+
+        tabBarIcon: ({ focused }) => {
+          const icons = {
+            Movies: "film",
+            Favourites: "heart",
+            Search: "search",
+            TV: "tv-sharp",
+          };
+          return (
+            <Ionicons
+              name={`${Platform.OS === "ios" ? "ios" : "md"}-${
+                icons[route.name]
+              }`}
+              color={focused ? "white" : "grey"}
+              size={26}
+            />
+          );
+        },
+      })}
+      tabBarOptions={{
+        showLabel: false,
+        style: {
+          backgroundColor: "black",
+          borderTopColor: "black",
+        },
+      }}
+    >
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="TV" component={Tv} />
       <Tabs.Screen name="Search" component={Search} />
