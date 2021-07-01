@@ -11,15 +11,15 @@ const Tabs = createBottomTabNavigator();
 export default ({ navigation, route }) => {
   //Stack nav가 Tab nav에게 전달해주는 prop
   //이 prop을 통해 부모와 소통할 수 있음
-  //   useEffect(() => {
-  //     navigation.setOptions({ title: "Hello from the Tabs" });
-  //   }, []);
 
   const routeName = getFocusedRouteNameFromRoute(route) ?? "Movies";
-  //route prop 우리가 어디있는지 알려줌
-  //layoutEffect은 useEffect와 비슷한데 레이아웃 변경이 다 끝난 후에 작동한다는 차이점
   useEffect(() => {
-    navigation.setOptions({ title: routeName });
+    navigation.setOptions({
+      title: routeName,
+      // headerStyle: {
+      //   backgroundColor: routeName === "TV" ? "blue" : "white",
+      // },
+    });
   }, [route]);
 
   return (
