@@ -32,7 +32,7 @@ export default ({ navigation, route }) => {
         tabBarIcon: ({ focused }) => {
           const icons = {
             Movies: "film",
-            Favourites: "heart",
+            Discovery: "heart",
             Search: "search",
             TV: "tv-sharp",
           };
@@ -58,7 +58,7 @@ export default ({ navigation, route }) => {
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="TV" component={Tv} />
       <Tabs.Screen name="Search" component={Search} />
-      <Tabs.Screen name="Favourites" component={Favs} />
+      <Tabs.Screen name="Discovery" component={Favs} />
     </Tabs.Navigator>
   );
 };
