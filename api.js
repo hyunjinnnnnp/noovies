@@ -10,9 +10,11 @@ const makeRequest = (path, params) =>
 const getAnything = async (path, params = {}) => {
   try {
     const {
+      // data object안에 result가 없는 경우 data를 받아올 것임
       data: { results },
+      data,
     } = await makeRequest(path, params);
-    return [results, null]; //null-- error
+    return [results || data, null];
   } catch (e) {
     return [null, e];
   }
