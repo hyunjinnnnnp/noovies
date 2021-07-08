@@ -1,11 +1,11 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
+import { TouchableOpacity } from "react-native";
 import { apiImage } from "../../api";
+import { trimText } from "../../utils";
 import Poster from "../Poster";
 import Votes from "../Votes";
-import { trimText } from "../../utils";
 
 const Container = styled.View`
   height: 100%;
@@ -34,7 +34,7 @@ const Data = styled.View`
 const Title = styled.Text`
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 19px;
   margin-bottom: 10px;
 `;
 
@@ -44,13 +44,14 @@ const VotesContainer = styled.View`
 
 const Overview = styled.Text`
   color: rgb(220, 220, 220);
+  font-size: 14px;
   font-weight: 500;
 `;
 
 const Button = styled.View`
   margin-top: 10px;
   background-color: #e74c3c;
-  padding: 5px 10px;
+  padding: 7px 10px;
   border-radius: 3px;
 `;
 
@@ -66,18 +67,19 @@ const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => (
       <Data>
         <Title>{trimText(title, 40)}</Title>
         <VotesContainer>
-          <Votes />
+          <Votes votes={votes} />
         </VotesContainer>
-        <Overview>{trimText(overview, 110)}</Overview>
+        <Overview>{trimText(overview, 80)}</Overview>
         <TouchableOpacity>
           <Button>
-            <ButtonText>View Details</ButtonText>
+            <ButtonText>View details</ButtonText>
           </Button>
         </TouchableOpacity>
       </Data>
     </Content>
   </Container>
 );
+
 Slide.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
