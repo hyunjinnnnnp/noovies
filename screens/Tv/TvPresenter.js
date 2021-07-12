@@ -1,16 +1,18 @@
 import React from "react";
+import styled from "styled-components/native";
 import ScrollContainer from "../../components/ScrollContainer";
 import HorizontalSlider from "../../components/HorizontalSlider";
 import Vertical from "../../components/Vertical";
 import Horizontal from "../../components/Horizontal";
-import styled from "styled-components/native";
 import List from "../../components/List";
+import SliderContainer from "../../components/SlideContainer";
+import Slide from "../../components/Slide";
 
 const Container = styled.View`
   margin-top: 30px;
 `;
 
-export default ({ loading, popular, topRated, today }) => (
+export default ({ loading, popular, topRated, today, thisWeek }) => (
   <ScrollContainer loading={loading}>
     <Container>
       <HorizontalSlider title="Popular Shows">
@@ -45,6 +47,21 @@ export default ({ loading, popular, topRated, today }) => (
             overview={show.overview}
           />
         ))}
+      </List>
+      <List title="This Week">
+        <SliderContainer>
+          {thisWeek.map((show) => (
+            <Slide
+              key={show.id}
+              id={show.id}
+              title={show.original_title}
+              overview={show.overview}
+              votes={show.vote_average}
+              backgroundImage={show.backdrop_path}
+              poster={show.poster_path}
+            />
+          ))}
+        </SliderContainer>
       </List>
     </Container>
   </ScrollContainer>
