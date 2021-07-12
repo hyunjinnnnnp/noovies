@@ -54,7 +54,7 @@ export default ({ loading, popular, topRated, today, thisWeek }) => (
             <Slide
               key={show.id}
               id={show.id}
-              title={show.original_title}
+              title={show.name}
               overview={show.overview}
               votes={show.vote_average}
               backgroundImage={show.backdrop_path}
