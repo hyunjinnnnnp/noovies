@@ -18,17 +18,12 @@ export default ({ navigation, route }) => {
   useEffect(() => {
     navigation.setOptions({
       title: routeName,
-      // headerStyle: {
-      //   backgroundColor: routeName === "TV" ? "blue" : "white",
-      // },
     });
   }, [route]);
 
   return (
     <Tabs.Navigator
       screenOptions={({ route }) => ({
-        //same as () => { return {} }
-
         tabBarIcon: ({ focused }) => {
           const icons = {
             Movies: "film",

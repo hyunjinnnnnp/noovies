@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { TouchableOpacity } from "react-native";
 import Poster from "./Poster";
 import { trimText, formatDate } from "../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   padding: 0px 30px;
@@ -42,22 +43,36 @@ const Horizontal = ({
   releaseDate,
   votes,
   firstAirDate,
-}) => (
-  <TouchableOpacity>
-    <Container>
-      <Poster url={poster} />
-      <Data>
-        <Title>{trimText(title, 30)}</Title>
-        {releaseDate ? <Info>{formatDate(releaseDate)}</Info> : null}
-        {votes ? <Info>{`⭐️ ${votes}/10`}</Info> : null}
-        {firstAirDate ? (
-          <Info>{`방영 시작일: ${formatDate(firstAirDate)}`}</Info>
-        ) : null}
-        <Overview>{trimText(overview, 130)}</Overview>
-      </Data>
-    </Container>
-  </TouchableOpacity>
-);
+}) => {
+  const navigation = useNavigation();
+  const goToDetail = () => {
+    navigation.navigate("Detail", {
+      id,
+      title,
+      poster,
+      overview,
+      releaseDate,
+      votes,
+      firstAirDate,
+    });
+  };
+  return (
+    <TouchableOpacity onPress={goToDetail}>
+      <Container>
+        <Poster url={poster} />
+        <Data>
+          <Title>{trimText(title, 30)}</Title>
+          {releaseDate ? <Info>{formatDate(releaseDate)}</Info> : null}
+          {votes ? <Info>{`⭐️ ${votes}/10`}</Info> : null}
+          {firstAirDate ? (
+            <Info>{`방영 시작일: ${formatDate(firstAirDate)}`}</Info>
+          ) : null}
+          <Overview>{trimText(overview, 130)}</Overview>
+        </Data>
+      </Container>
+    </TouchableOpacity>
+  );
+};
 
 Horizontal.proptypes = {
   id: PropTypes.number.isRequired,
