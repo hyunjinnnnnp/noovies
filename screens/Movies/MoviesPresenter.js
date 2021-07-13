@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
 import Slide from "../../components/Slide";
 import Vertical from "../../components/Vertical";
 import Horizontal from "../../components/Horizontal";
