@@ -36,6 +36,7 @@ const Overview = styled.Text`
 `;
 
 const Horizontal = ({
+  isTv = false,
   id,
   title,
   poster,
@@ -47,6 +48,7 @@ const Horizontal = ({
   const navigation = useNavigation();
   const goToDetail = () => {
     navigation.navigate("Detail", {
+      isTv,
       id,
       title,
       poster,

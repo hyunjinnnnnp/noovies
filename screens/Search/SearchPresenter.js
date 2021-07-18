@@ -24,7 +24,6 @@ export default ({ movies, shows, keyword, onChange, onSubmit }) => (
             id={movie.id}
             title={movie.title}
             poster={movie.poster_path}
-            overview={movie.overview}
             releaseDate={movie.release_date}
             votes={movie.vote_average}
           />
@@ -35,11 +34,11 @@ export default ({ movies, shows, keyword, onChange, onSubmit }) => (
       <HorizontalSlider title={"TV Results"}>
         {shows.map((show) => (
           <Vertical
+            isTv={true}
             key={show.id}
             id={show.id}
             title={show.name}
             poster={show.poster_path}
-            overview={show.overview}
             releaseDate={show.release_date}
             votes={show.vote_average}
           />

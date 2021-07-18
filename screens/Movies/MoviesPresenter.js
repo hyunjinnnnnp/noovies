@@ -35,7 +35,6 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
               poster={movie.poster_path}
               title={movie.title}
               votes={movie.vote_average}
-              overview={movie.overview}
             />
           ))}
         </HorizontalSlider>
