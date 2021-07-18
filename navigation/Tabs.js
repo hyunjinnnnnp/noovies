@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Movies from "../screens/Movies";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
-import Favs from "../screens/Favs";
+import Favs from "../screens/Fav";
 
 const Tabs = createBottomTabNavigator();
 
@@ -50,10 +50,10 @@ export default ({ navigation, route }) => {
         },
       }}
     >
+      <Tabs.Screen name="Discovery" component={Favs} />
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="TV" component={Tv} />
       <Tabs.Screen name="Search" component={Search} />
-      <Tabs.Screen name="Discovery" component={Favs} />
     </Tabs.Navigator>
   );
 };
